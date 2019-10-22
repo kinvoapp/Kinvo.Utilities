@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Company>Kinvo</Company>
+    <Authors>Kinvo Staff</Authors>
+    <Description>Kinvo.Utilities is a collection of methods to make easy develop a lot of features</Description>
+    <PackageProjectUrl>https://github.com/kinvoapp/Kinvo.Utilities</PackageProjectUrl>
+    <PackageTags>kinvo utilities</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

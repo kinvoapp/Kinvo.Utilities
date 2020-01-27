@@ -10,9 +10,9 @@
     <RepositoryUrl>https://github.com/kinvoapp/Kinvo.Utilities</RepositoryUrl>
     <RepositoryType>Kinvo.Utilities</RepositoryType>
     <PackageIconUrl>https://app.kinvo.com.br/favicon.png</PackageIconUrl>
-    <PackageReleaseNotes>Icon included</PackageReleaseNotes>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <Version>1.0.1</Version>
+    <PackageReleaseNotes>Creates extension methods</PackageReleaseNotes>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

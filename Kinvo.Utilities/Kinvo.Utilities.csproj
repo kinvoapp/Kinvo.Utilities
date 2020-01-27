@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <Company>Kinvo</Company>
     <Authors>Kinvo staff</Authors>
     <Description>Kinvo.Utilities is a collection of methods to make easy develop a lot of features</Description>

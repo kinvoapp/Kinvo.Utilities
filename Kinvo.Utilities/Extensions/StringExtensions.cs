@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using System.Linq;
 
 namespace Kinvo.Utilities.Extensions
 {
@@ -91,6 +92,16 @@ namespace Kinvo.Utilities.Extensions
                 }
             }
             return null;
+        }
+
+        public static string JoinWithDifferentLastDelimitor(this string[] stringArray, string defaultDelimitor, string lastDelimitor)
+        {
+            if (stringArray == null)
+                throw new ArgumentException();
+
+            var stringArrayCount = stringArray.Count();
+            return (stringArrayCount <= 1) ? string.Join(defaultDelimitor, stringArray)
+                : string.Join(defaultDelimitor, stringArray, 0, stringArrayCount - 1) + lastDelimitor + stringArray.LastOrDefault();
         }
     }
 }

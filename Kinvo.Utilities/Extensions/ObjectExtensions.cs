@@ -4,23 +4,21 @@ namespace Kinvo.Utilities.Extensions
 {
     public static class ObjectExtensions
     {
-        public static void CopyPropertiesTo<T, TU>(this T source, TU dest)
+        public static void CopyPropertiesTo<TSource, TDest>(this TSource source, TDest destination)
         {
-            var sourceProps = typeof(T).GetProperties().Where(x => x.CanRead).ToList();
-            var destProps = typeof(TU).GetProperties()
-                    .Where(x => x.CanWrite)
-                    .ToList();
+            var sourceProperties = typeof(TSource).GetProperties()
+                .Where(sourceProperty => sourceProperty.CanRead)
+                .ToList();
+            var destinationProperties = typeof(TDest).GetProperties()
+                .Where(destinationProperty => destinationProperty.CanWrite)
+                .ToList();
 
-            foreach (var sourceProp in sourceProps)
+            foreach (var sourceProp in sourceProperties)
             {
-                if (destProps.Any(x => x.Name == sourceProp.Name))
-                {
-                    var p = destProps.First(x => x.Name == sourceProp.Name);
-                    if (p.CanWrite)
-                    { // check if the property can be set or no.
-                        p.SetValue(dest, sourceProp.GetValue(source, null), null);
-                    }
-                }
+                var matchingDestinationProperty = destinationProperties.FirstOrDefault(x => x.Name == sourceProp.Name);
+
+                if (matchingDestinationProperty != null)
+                    matchingDestinationProperty.SetValue(destination, sourceProp.GetValue(source, null), null);
             }
         }
     }

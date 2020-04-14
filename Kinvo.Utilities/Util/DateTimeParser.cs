@@ -16,5 +16,10 @@ namespace Kinvo.Utilities.Util
 
             return (long)t.TotalSeconds;
         }
+
+        public static string ConvertDateTimeToIso8601(DateTime? date)
+        {
+            return date?.ToString(@"yyyy-MM-dd\THH:mm:ss\Z");
+        }
     }
 }

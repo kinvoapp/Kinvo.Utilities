@@ -103,5 +103,10 @@ namespace Kinvo.Utilities.Extensions
             return (stringArrayCount <= 1) ? string.Join(defaultDelimitor, stringArray)
                 : string.Join(defaultDelimitor, stringArray, 0, stringArrayCount - 1) + lastDelimitor + stringArray.LastOrDefault();
         }
+
+        public static string RemoveFromEnd(this string text, string suffix)
+        {
+            return text.EndsWith(suffix) ? text.Substring(0, text.Length - suffix.Length) : text;
+        }
     }
 }

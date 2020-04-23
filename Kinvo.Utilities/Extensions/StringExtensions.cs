@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
@@ -107,6 +108,43 @@ namespace Kinvo.Utilities.Extensions
         public static string RemoveFromEnd(this string text, string suffix)
         {
             return text.EndsWith(suffix) ? text.Substring(0, text.Length - suffix.Length) : text;
+        }
+
+        public static string RemoveAllTextBetween(this string text, string begin, string end, bool includeBeginAndEnd)
+        {
+            return ReplaceAllTextBetween(text, begin, end, string.Empty, includeBeginAndEnd);
+        }
+
+        public static string ReplaceAllTextBetween(this string text, string begin, string end, string newText, bool includeBeginAndEnd)
+        {
+            if (!string.IsNullOrEmpty(begin) && !string.IsNullOrEmpty(end))
+            {
+                var targetString = StringBetween(text, begin, end);
+                var ocurrencies = new List<string>();
+                int ocurrentyAmount = 0;
+                while (targetString != null)
+                {
+                    if (includeBeginAndEnd)
+                    {
+                        text = text.Replace(begin + targetString + end, newText);
+                        ocurrentyAmount++;
+                        targetString = StringBetween(text, begin, end);
+                    }
+                    else
+                    {
+                        if (!ocurrencies.Contains(targetString))
+                        {
+                            text = text.Replace(begin + targetString + end, begin + newText + end);
+                            ocurrencies.Add(targetString);
+                        }
+                        targetString = text.StringBetween(begin, end, ++ocurrentyAmount);
+                    }
+
+                    if (ocurrentyAmount > 0x2710)
+                        throw new StackOverflowException();
+                }
+            }
+            return text;
         }
     }
 }

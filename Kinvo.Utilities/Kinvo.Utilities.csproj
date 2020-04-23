@@ -10,9 +10,9 @@
     <RepositoryUrl>https://github.com/kinvoapp/Kinvo.Utilities</RepositoryUrl>
     <RepositoryType>Kinvo.Utilities</RepositoryType>
     <PackageIconUrl>https://app.kinvo.com.br/favicon.png</PackageIconUrl>
-    <PackageReleaseNotes>Add extension for string array: join with different last delimitor</PackageReleaseNotes>
-    <AssemblyVersion>1.3.0.0</AssemblyVersion>
-    <Version>1.3.0</Version>
+    <PackageReleaseNotes>Create ConvertUtil + add extension methods for strings and utility methods for DateTime</PackageReleaseNotes>
+    <AssemblyVersion>1.4.0.0</AssemblyVersion>
+    <Version>1.4.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

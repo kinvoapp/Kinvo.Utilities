@@ -5,7 +5,7 @@ using System;
 
 namespace Kinvo.Utilities.Test
 {
-    public class ObjectExtensions
+    public class ObjectExtensionsTest
     {
         [Theory]
         [InlineData(1)]

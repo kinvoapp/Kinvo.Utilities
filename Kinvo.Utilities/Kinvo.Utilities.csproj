@@ -10,9 +10,9 @@
     <RepositoryUrl>https://github.com/kinvoapp/Kinvo.Utilities</RepositoryUrl>
     <RepositoryType>Kinvo.Utilities</RepositoryType>
     <PackageIconUrl>https://app.kinvo.com.br/favicon.png</PackageIconUrl>
-    <PackageReleaseNotes>Creates IsNullOrEmpty extension method for Lists</PackageReleaseNotes>
-    <AssemblyVersion>1.7.0.0</AssemblyVersion>
-    <Version>1.7.0</Version>
+    <PackageReleaseNotes>Add ToDynamic extension method to objects</PackageReleaseNotes>
+    <AssemblyVersion>1.8.0.0</AssemblyVersion>
+    <Version>1.8.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

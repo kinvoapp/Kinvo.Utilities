@@ -1,9 +1,9 @@
-﻿using Kinvo.Utilities.Extensions;
-using Xunit;
-using FluentAssertions;
+﻿using FluentAssertions;
+using Kinvo.Utilities.Extensions;
 using System;
+using Xunit;
 
-namespace Kinvo.Utilities.Test
+namespace Kinvo.Utilities.Test.Extensions
 {
     public class ObjectExtensionsTest
     {
@@ -46,7 +46,7 @@ namespace Kinvo.Utilities.Test
             src.UnwritableIdOnDest.Should().Be(idValue);
             dest.UnwritableIdOnDest.Should().Be(null);
         }
-        
+
         [Fact]
         public void EmptyClassShouldntThrowError()
         {
@@ -73,7 +73,7 @@ namespace Kinvo.Utilities.Test
         public int? DifferentId { get; private set; }
         public int? UnwritableIdOnDest { get; }
     }
-    
+
     public class Empty
     {
     }

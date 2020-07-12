@@ -1,9 +1,9 @@
-﻿using Xunit;
-using FluentAssertions;
+﻿using FluentAssertions;
+using Kinvo.Utilities.Util;
 using System;
 using System.Net.Http;
-using Kinvo.Utilities.Util;
 using System.Threading.Tasks;
+using Xunit;
 
 namespace Kinvo.Utilities.Test.Util
 {
@@ -15,7 +15,7 @@ namespace Kinvo.Utilities.Test.Util
         [Fact]
         public async Task ShouldTrackAsyncRequests()
         {
-            var response = await Tracker<HttpResponseMessage>.TrackAsync(() => 
+            var response = await Tracker<HttpResponseMessage>.TrackAsync(() =>
             {
                 return client.GetAsync("https://jsonplaceholder.typicode.com/todos/1");
             });

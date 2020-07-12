@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Dynamic;
 using System.Linq;
 
 namespace Kinvo.Utilities.Extensions
@@ -20,6 +23,16 @@ namespace Kinvo.Utilities.Extensions
                 if (matchingDestinationProperty != null)
                     matchingDestinationProperty.SetValue(destination, sourceProp.GetValue(source, null), null);
             }
+        }
+
+        public static dynamic ToDynamic(this object value)
+        {
+            IDictionary<string, object> expando = new ExpandoObject();
+
+            foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(value.GetType()))
+                expando.Add(property.Name, property.GetValue(value));
+
+            return expando as ExpandoObject;
         }
     }
 }

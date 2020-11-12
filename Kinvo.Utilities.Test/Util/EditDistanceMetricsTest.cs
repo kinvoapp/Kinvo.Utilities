@@ -13,7 +13,7 @@ namespace Kinvo.Utilities.Test.Util
         [InlineData("kitten", "sitting", 3)]
         public void Levenshtein_ShouldReturnCorrectEditDistance(string s1, string s2, int editDistance)
         {
-            editDistance.Should().Be(EditDistanceMetrics.LevenshteinEditDistanceOptimized(s1, s2));
+            editDistance.Should().Be(EditDistanceMetrics.GetLevenshteinEditDistance(s1, s2));
         }
     }
 }

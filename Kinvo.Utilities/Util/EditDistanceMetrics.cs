@@ -11,7 +11,7 @@ namespace Kinvo.Utilities.Util
         /// <param name="word1"></param>
         /// <param name="word2"></param>
         /// <returns></returns>
-        public static int LevenshteinEditDistanceOptimized(
+        public static int GetLevenshteinEditDistance(
         string word1,
         string word2)
         {

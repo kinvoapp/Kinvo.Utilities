@@ -194,9 +194,7 @@ namespace Kinvo.Utilities.Validations
         /// <param name="email">mail adress</param>
         public static bool IsValidEmail(string emailAddress)
         {
-            string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
-                 @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
-                 @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+            string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,8}|[0-9]{1,8})(\]?)$";
 
             Regex rg = new Regex(strRegex);
 

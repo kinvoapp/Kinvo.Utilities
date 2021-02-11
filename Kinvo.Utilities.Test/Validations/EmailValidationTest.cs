@@ -8,6 +8,7 @@ namespace Kinvo.Utilities.Test.Validations
         [Theory]
         [InlineData("kinvo@vini.rocks", true)]
         [InlineData("kinvo@email.com", true)]
+        [InlineData("kinvo.teste@email.com", true)]
         [InlineData("kinvo@email.com.br", true)]
         [InlineData("kinvo@email", false)]
         [InlineData("sometext.com", false)]

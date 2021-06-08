@@ -10,9 +10,9 @@
     <RepositoryUrl>https://github.com/kinvoapp/Kinvo.Utilities</RepositoryUrl>
     <RepositoryType>Kinvo.Utilities</RepositoryType>
     <PackageIconUrl>https://app.kinvo.com.br/favicon.png</PackageIconUrl>
-    <PackageReleaseNotes>Altera o regex de validação de email</PackageReleaseNotes>
-    <AssemblyVersion>1.9.1.0</AssemblyVersion>
-    <Version>1.9.1</Version>
+    <PackageReleaseNotes>Adiciona classes utilitarias Builders</PackageReleaseNotes>
+    <AssemblyVersion>1.10.0.0</AssemblyVersion>
+    <Version>1.10.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 
 namespace Kinvo.Utilities.Extensions
@@ -14,6 +15,16 @@ namespace Kinvo.Utilities.Extensions
 
             var provider = CultureInfo.InvariantCulture;
             return DateTime.ParseExact(inputDate, format, provider);
+        }
+
+        public static Stream ToStream(this string input)
+        {
+            var stream = new MemoryStream();
+            var writer = new StreamWriter(stream);
+            writer.Write(input);
+            writer.Flush();
+            stream.Position = 0;
+            return stream;
         }
 
         public static string GetUntilOrEmpty(this string text, string stopAt = "-")

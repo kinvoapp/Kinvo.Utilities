@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using TimeZoneConverter;
 
 namespace Kinvo.Utilities.Util
 {
@@ -10,10 +11,27 @@ namespace Kinvo.Utilities.Util
             return Convert.ToInt32(date1.Subtract(date2).Days / (365.25 / 12));
         }
 
+        /// <summary>
+        /// Defaults to the TZ database name: America/Sao_Paulo
+        /// </summary>
+        /// <returns></returns>
         public static DateTime GetSouthAmericaDateTimeNow()
         {
             DateTime timeUtc = DateTime.UtcNow;
-            TimeZoneInfo kstZone = TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time");
+            TimeZoneInfo kstZone = TZConvert.GetTimeZoneInfo("America/Sao_Paulo");
+            return TimeZoneInfo.ConvertTimeFromUtc(timeUtc, kstZone);
+        }
+
+        /// <summary>
+        /// The timezoneId is the TZ database name provided on this link
+        /// https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+        /// </summary>
+        /// <param name="timeZoneId"></param>
+        /// <returns></returns>
+        public static DateTime GetDateTimeNowByTimeZoneInfo(string timeZoneId)
+        {
+            DateTime timeUtc = DateTime.UtcNow;
+            TimeZoneInfo kstZone = TZConvert.GetTimeZoneInfo(timeZoneId);
             return TimeZoneInfo.ConvertTimeFromUtc(timeUtc, kstZone);
         }
 

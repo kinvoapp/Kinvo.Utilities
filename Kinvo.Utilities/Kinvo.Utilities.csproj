@@ -10,13 +10,14 @@
     <RepositoryUrl>https://github.com/kinvoapp/Kinvo.Utilities</RepositoryUrl>
     <RepositoryType>Kinvo.Utilities</RepositoryType>
     <PackageIconUrl>https://app.kinvo.com.br/favicon.png</PackageIconUrl>
-    <PackageReleaseNotes>Adiciona nova extensão de string e validação com Regex.</PackageReleaseNotes>
-    <AssemblyVersion>1.11.0.0</AssemblyVersion>
-    <Version>1.11.0</Version>
+    <PackageReleaseNotes>Adiciona novo pacote para trabalhar com DateTime.</PackageReleaseNotes>
+    <AssemblyVersion>1.12.0.0</AssemblyVersion>
+    <Version>1.12.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="TimeZoneConverter" Version="6.1.0" />
   </ItemGroup>
 
 </Project>

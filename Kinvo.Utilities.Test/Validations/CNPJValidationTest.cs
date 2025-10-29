@@ -12,6 +12,8 @@ namespace Kinvo.Utilities.Test.Validations
         [InlineData("01.234.567/8910-11", false)]
         [InlineData("1.234.567/8910-11", false)]
         [InlineData("234.567/8910-11", false)]
+        [InlineData("12.ABC.345/01DE-35", true)]
+        [InlineData("12.ABC.345/01DE-25", false)]
         public void ShouldValidateCorrectly(string document, bool result)
         {
             var isValid = Utilities.Validations.Validate.IsValidCNPJ(document);

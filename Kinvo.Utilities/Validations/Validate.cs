@@ -302,68 +302,53 @@ namespace Kinvo.Utilities.Validations
         /// <returns></returns>
         public static bool IsValidCNPJ(string vrCNPJ)
         {
+            if (string.IsNullOrWhiteSpace(vrCNPJ)) return false;
+
             string CNPJ = vrCNPJ.Replace(".", "");
             CNPJ = CNPJ.Replace("/", "");
             CNPJ = CNPJ.Replace("-", "");
+            CNPJ = CNPJ.Replace(" ", "");
+            CNPJ = CNPJ.ToUpperInvariant();
             CNPJ = "00000000000000" + CNPJ;
             CNPJ = CNPJ.Substring(CNPJ.Length - 14, 14);
 
-            int[] digits, sum, result;
-            int nrDig;
-            string ftmt;
-            bool[] CNPJOk;
-
-            ftmt = "6543298765432";
-            digits = new int[14];
-            sum = new int[2];
-            sum[0] = 0;
-            sum[1] = 0;
-
-            result = new int[2];
-            result[0] = 0;
-            result[1] = 0;
-
-            CNPJOk = new bool[2];
-            CNPJOk[0] = false;
-            CNPJOk[1] = false;
-
-            try
-            {
-                for (nrDig = 0; nrDig < 14; nrDig++)
-                {
-                    digits[nrDig] = int.Parse(
-                        CNPJ.Substring(nrDig, 1));
-
-                    if (nrDig <= 11)
-                        sum[0] += (digits[nrDig] *
-                          int.Parse(ftmt.Substring(
-                          nrDig + 1, 1)));
-                    if (nrDig <= 12)
-                        sum[1] += (digits[nrDig] *
-                          int.Parse(ftmt.Substring(
-                          nrDig, 1)));
-                }
-
-                for (nrDig = 0; nrDig < 2; nrDig++)
-                {
-                    result[nrDig] = (sum[nrDig] % 11);
-
-                    if ((result[nrDig] == 0) || (
-                         result[nrDig] == 1))
-                        CNPJOk[nrDig] = (
-                        digits[12 + nrDig] == 0);
-                    else
-                        CNPJOk[nrDig] = (
-                        digits[12 + nrDig] == (
-                        11 - result[nrDig]));
-                }
-
-                return (CNPJOk[0] && CNPJOk[1]);
-            }
-            catch
-            {
+            if (!Regex.IsMatch(CNPJ, @"^[A-Z0-9]{12}[0-9]{2}$"))
                 return false;
+
+            int ChartToValue(char c)
+            {
+                if (c >= '0' && c <= '9') return c - '0';
+                if (c >= 'A' && c <= 'Z') return c - 48;
+                return -1;
             }
+
+            int[] weightDV1 = { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int[] weightDV2 = { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+
+            int sum1 = 0;
+            for (int i = 0; i < 12; i++)
+            {
+                int v = ChartToValue(CNPJ[i]);
+                sum1 += v * weightDV1[i];
+            }
+            int r1 = sum1 % 11;
+            int dv1 = (r1 < 2) ? 0 : 11 - r1;
+
+            int sum2 = 0;
+            for (int i = 0; i < 12; i++)
+            {
+                int v = ChartToValue(CNPJ[i]);
+                sum2 += v * weightDV2[i];
+            }
+
+            sum2 += dv1 * weightDV2[12];
+            int r2 = sum2 % 11;
+            int dv2 = (r2 < 2) ? 0 : 11 - r2;
+
+            int dvInformed1 = CNPJ[12] - '0';
+            int dvInformed2 = CNPJ[13] - '0';
+
+            return dv1 == dvInformed1 && dv2 == dvInformed2;
         }
 
         public static void DateTime(string date)

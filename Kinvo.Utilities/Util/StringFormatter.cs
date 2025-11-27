@@ -19,7 +19,7 @@ namespace Kinvo.Utilities.Util
             // Remove NaN character
             foreach (char c in value)
             {
-                if (Char.IsNumber(c))
+                if (Char.IsLetterOrDigit(c))
                     dado.Append(c);
             }
             int indMascara = mask.Length;
